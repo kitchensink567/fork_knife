@@ -1,39 +1,67 @@
+#include <TileDef.h>
 using namespace std;
 
-const int MAP_HEIGHT = 50;
+Tile::Tile() {
+}
 
-const int MAP_WIDTH = 60;
+Tile::Tile(int terr, bool capt) {
+  terrain = terr;
+  captured = capt;
+}
 
-class Tile {
-	int terrain; // grass 0, forest 1, heavyforest 2, desert 3, jungle 4
-	
-	struct capturedTile {
-		int building;
-		int action; // nothing happening 0, building 1, upgrading 2
-		int timeLeft;
-	}
-	
-	struct uncapturedTile {
-		int difficulty;
-		int maxBloon;
-		int track;
-		bool camoAssault;
-		bool regrowAssault;
-		bool fortifiedAssault;
-		bool tatteredAsssault;
-	}
+Tile::uncapturedTile::uncapturedTile() {
+}
 
-public: 
-	int getTerrain() {
-		return terrain;
-	}
-	int getDifficulty() {
-		return uncapturedTile.difficulty;
-	}
-	int getMaxBloon() {
-		return uncapturedTile.maxBloon;
-	}
-	int getTrack() {
-		return uncapturedTile.track;
-	}
-} map[MAP_HEIGHT][MAP_WIDTH];
+Tile::uncapturedTile::uncapturedTile(int dif, int maxBl, int trck, bool camAsslt, bool rgrwAsslt, bool fortAsslt, bool tattrdAsslt) {
+  difficulty = dif;
+  maxBloon = maxBl;
+  track = trck;
+  camoAssault = camAsslt;
+  regrowAssault = rgrwAsslt;
+  fortifiedAssault = fortAsslt;
+  tatteredAssault = tattrdAsslt;
+}
+
+void Tile::setTerrain(int terr) {
+  terrain = terr;
+}
+
+void Tile::setCaptured(bool capt) {
+  captured = capt;
+}
+
+int Tile::getTerrain() {
+  return terrain;
+}
+
+int Tile::getDifficulty() {
+  return uncap.difficulty;
+}
+
+int Tile::getMaxBloon() {
+  return uncap.maxBloon;
+}
+
+int Tile::getTrack() {
+  return uncap.track;
+}
+
+bool Tile::getCaptured() {
+  return captured;
+}
+
+bool Tile::getCamoAssault() {
+  return uncap.camoAssault;
+}
+
+bool Tile::getRegrowAssault() {
+  return uncap.regrowAssault;
+}
+
+bool Tile::getFortifiedAssault() {
+  return uncap.fortifiedAssault;
+}
+
+bool Tile::getTatteredAssault() {
+  return uncap.tatteredAssault;
+}
