@@ -24,6 +24,8 @@ class Tile {
     bool captured;
 
     struct capturedTile {
+      capturedTile()
+      capturedTile(int building, int action, int timeLeft);
       int building;
       int action; // nothing happening 0, building 1, upgrading 2
       int timeLeft;
