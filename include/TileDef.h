@@ -20,7 +20,7 @@ class Tile {
     bool getFortifiedAssault();
     bool getTatteredAssault();
   private:
-    int terrain; // grass 0, forest 1, heavyforest 2, desert 3, jungle 4
+    int terrain; // grass 0, forest 1, heavyforest 2, desert 3, jungle 4, hills 5, mountains 6, volcano 7, lake 8, river 9, snow 10, high desert 11, badlands 12, aridgrasslands 13, caves 14, one for each special mission?
     bool captured;
 
     struct capturedTile {
