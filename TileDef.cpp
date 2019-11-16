@@ -1,4 +1,5 @@
 #include <TileDef.h>
+#include <iostream>
 using namespace std;
 
 Tile::Tile() {
@@ -7,6 +8,14 @@ Tile::Tile() {
 Tile::Tile(int terr, bool capt) {
   terrain = terr;
   captured = capt;
+  if (captured) {
+    cap = new capturedTile(0, 0, 0);
+    uncap = NULL;
+  }
+  else {
+    cap = NULL;
+    uncap = new uncapturedTile(0,0,0,false, false, false, false);
+  }
 }
 
 Tile::uncapturedTile::uncapturedTile() {
@@ -27,7 +36,7 @@ Tile::uncapturedTile::uncapturedTile(int dif, int maxBl, int trck, bool camAsslt
 
 Tile::capturedTile::capturedTile(int bldng, int actn, int time) {
   building = bldng;
-  action = atn;
+  action = actn;
   timeLeft = time;
 }
 
@@ -40,8 +49,9 @@ void Tile::setCaptured(bool capt) {
 }
 
 void Tile::capture() {
-  capturedTile(0, 0, 0);
+  cap = new capturedTile(0, 0, 0);
   setCaptured(true);
+  delete uncap;
 }
 
 int Tile::getTerrain() {
@@ -49,15 +59,15 @@ int Tile::getTerrain() {
 }
 
 int Tile::getDifficulty() {
-  return uncap.difficulty;
+  return uncap->difficulty;
 }
 
 int Tile::getMaxBloon() {
-  return uncap.maxBloon;
+  return uncap->maxBloon;
 }
 
 int Tile::getTrack() {
-  return uncap.track;
+  return uncap->track;
 }
 
 bool Tile::getCaptured() {
@@ -65,17 +75,17 @@ bool Tile::getCaptured() {
 }
 
 bool Tile::getCamoAssault() {
-  return uncap.camoAssault;
+  return uncap->camoAssault;
 }
 
 bool Tile::getRegrowAssault() {
-  return uncap.regrowAssault;
+  return uncap->regrowAssault;
 }
 
 bool Tile::getFortifiedAssault() {
-  return uncap.fortifiedAssault;
+  return uncap->fortifiedAssault;
 }
 
 bool Tile::getTatteredAssault() {
-  return uncap.tatteredAssault;
+  return uncap->tatteredAssault;
 }

@@ -10,6 +10,7 @@ class Tile {
     Tile(int terr, bool capt);
     void setTerrain(int terr);
     void setCaptured(bool capt);
+    void capture();
     int getTerrain();
     int getDifficulty();
     int getMaxBloon();
@@ -24,7 +25,7 @@ class Tile {
     bool captured;
 
     struct capturedTile {
-      capturedTile()
+      capturedTile();
       capturedTile(int bldng, int actn, int time);
       int building;
       int action; // nothing happening 0, building 1, upgrading 2
@@ -34,7 +35,6 @@ class Tile {
     struct uncapturedTile {
       uncapturedTile();
       uncapturedTile(int dif, int maxBl, int trck, bool camAsslt, bool rgrwAsslt, bool fortAsslt, bool tattrdAsslt);
-      capture();
       int difficulty;
       int maxBloon;
       int track;
@@ -43,8 +43,8 @@ class Tile {
       bool fortifiedAssault;
       bool tatteredAssault;
     };
-    capturedTile cap;
-    uncapturedTile uncap;
+    capturedTile *cap;
+    uncapturedTile *uncap;
 };
 
 
