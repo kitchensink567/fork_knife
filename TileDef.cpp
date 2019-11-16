@@ -12,6 +12,9 @@ Tile::Tile(int terr, bool capt) {
 Tile::uncapturedTile::uncapturedTile() {
 }
 
+Tile::capturedTile::capturedTile() {
+}
+
 Tile::uncapturedTile::uncapturedTile(int dif, int maxBl, int trck, bool camAsslt, bool rgrwAsslt, bool fortAsslt, bool tattrdAsslt) {
   difficulty = dif;
   maxBloon = maxBl;
@@ -22,12 +25,22 @@ Tile::uncapturedTile::uncapturedTile(int dif, int maxBl, int trck, bool camAsslt
   tatteredAssault = tattrdAsslt;
 }
 
+Tile::capturedTile::capturedTile(int bldng, int actn, int time) {
+  building = bldng;
+  action = atn;
+  timeLeft = time;
+}
+
 void Tile::setTerrain(int terr) {
   terrain = terr;
 }
 
 void Tile::setCaptured(bool capt) {
   captured = capt;
+}
+
+void Tile::capture() {
+  capturedTile(0, 0, 0);
 }
 
 int Tile::getTerrain() {
