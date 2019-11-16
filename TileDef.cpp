@@ -41,6 +41,7 @@ void Tile::setCaptured(bool capt) {
 
 void Tile::capture() {
   capturedTile(0, 0, 0);
+  setCaptured(true);
 }
 
 int Tile::getTerrain() {
