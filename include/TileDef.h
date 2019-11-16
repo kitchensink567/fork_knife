@@ -32,6 +32,7 @@ class Tile {
     struct uncapturedTile {
       uncapturedTile();
       uncapturedTile(int dif, int maxBl, int trck, bool camAsslt, bool rgrwAsslt, bool fortAsslt, bool tattrdAsslt);
+      capture();
       int difficulty;
       int maxBloon;
       int track;
