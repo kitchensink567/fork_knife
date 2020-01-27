@@ -91,6 +91,8 @@ bool readData(Tile ****map) {
 
 int main(int argc, char *argv[]) {
   Tile ***map = NULL;
+  string action;
+  int x, y;
   srand(time(NULL));
   if (!readData(&map)) {
     map = new Tile**[MAP_HEIGHT];
@@ -115,6 +117,10 @@ int main(int argc, char *argv[]) {
       delete []map[i];
       cout << endl;
     }
+  }
+  while (action != "quit") {
+    cin >> x >> y;
+    map[x][y].capture();
   }
   delete []map;
   return EXIT_SUCCESS;
